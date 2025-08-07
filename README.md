@@ -36,7 +36,7 @@ movie-front/
 │   ├── views/
 │   ├── App.tsx
 │   └── main.tsx
-├── tailwind.config.js
-├── postcss.config.js
+├── vite.config.ts
+├── tsconfig.app.json
 ├── package.json
 └── README.md

@@ -7,7 +7,7 @@ import { useMovies } from '../hooks/useMovies';
 import { genres } from '../data/movieData';
 import type { Movie } from '../types/movie';
 import { Film, Filter } from 'lucide-react';
-import { useWatchlist } from '../context/WatchlistContext';
+import { useWatchlist } from '..//hooks/useWatchlist';
 
 interface MoviesPageProps {
   searchQuery: string;

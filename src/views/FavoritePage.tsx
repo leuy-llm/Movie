@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useWatchlist } from '../context/WatchlistContext';
+import { useWatchlist } from '../hooks/useWatchlist';
 import MovieCard from '../components/MovieCard';
 import type { Movie } from '../types/movie';
 import MovieModal from '../components/MovieModal';
@@ -34,17 +34,24 @@ const FavoritePage: React.FC = () => {
             <p className="text-gray-500 mt-2">Go add some from the home page!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {watchlist.map((movie: Movie) => (
-              <MovieCard
-                key={movie.id}
-                movie={movie}
-                onMovieClick={handleMovieClick} // ✅ trigger modal
-                onAddToWatchlist={addToWatchlist}
-                inWatchlist={isInWatchlist(movie.id)}
-              />
-            ))}
-          </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {watchlist
+        .filter(item => item.media_type === 'movie')
+        .map((item) => {
+          const movie = item as Movie & { media_type: 'movie' };
+          return (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              onMovieClick={handleMovieClick}
+              onAddToWatchlist={() => addToWatchlist(movie)}
+              inWatchlist={isInWatchlist(movie.id, 'movie')}
+            />
+          );
+        })}
+
+    </div>
+
         )}
       </div>
 

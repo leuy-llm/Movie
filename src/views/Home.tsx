@@ -4,7 +4,7 @@ import MovieCard from '../components/MovieCard';
 import TVShowCard from '../components/TVShowCard';
 import MovieModal from '../components/MovieModal';
 import TVShowModal from '../components/TVShowModal';
-import LoadingSpinner from '../components/LoadingSpinner';
+// import LoadingSpinner from '../components/LoadingSpinner';
 import { useMovies } from '../hooks/useMovies';
 // import { useWatchlist } from '../hooks/useWatchlist';
 import { tvShows } from '../data/tvShowData';
@@ -23,7 +23,7 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ 
   searchQuery, 
-  watchlistCount, 
+  // watchlistCount, 
   addToWatchlist, 
   isInWatchlist 
 }) => {

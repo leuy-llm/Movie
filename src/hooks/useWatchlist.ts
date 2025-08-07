@@ -1,27 +1,10 @@
-import { useState, useCallback } from 'react';
-import type { Movie, TVShow } from '../types/movie';
+import { useContext } from 'react';
+import { WatchlistContext } from '../context/WatchlistContext';
 
 export const useWatchlist = () => {
-  const [watchlist, setWatchlist] = useState<(Movie | TVShow)[]>([]);
-
-  const addToWatchlist = useCallback((item: Movie | TVShow) => {
-    setWatchlist(prev => {
-      const isAlreadyInWatchlist = prev.some(watchlistItem => watchlistItem.id === item.id);
-      if (isAlreadyInWatchlist) {
-        return prev.filter(watchlistItem => watchlistItem.id !== item.id);
-      }
-      return [...prev, item];
-    });
-  }, []);
-
-  const isInWatchlist = useCallback((itemId: number) => {
-    return watchlist.some(item => item.id === itemId);
-  }, [watchlist]);
-
-  return {
-    watchlist,
-    addToWatchlist,
-    isInWatchlist,
-    watchlistCount: watchlist.length
-  };
+  const context = useContext(WatchlistContext);
+  if (!context) {
+    throw new Error('useWatchlist must be used within a WatchlistProvider');
+  }
+  return context;
 };

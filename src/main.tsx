@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import 'react-loading-skeleton/dist/skeleton.css';
-import { WatchlistProvider } from './context/WatchlistContext.tsx';
+import { WatchlistProvider } from './context/WatchlistProvider.tsx';
 
 
 createRoot(document.getElementById('root')!).render(
